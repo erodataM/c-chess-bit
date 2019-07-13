@@ -164,19 +164,19 @@ unsigned long long Utils::getRand()
     return distribution(generator);
 }
 
-unsigned long long Utils::setBit(int i, unsigned long long number)
+void Utils::setBit(unsigned long long i, unsigned long long *number)
 {
-    return number | (this->one << i);
+    *number |= i;
 }
 
-unsigned long long Utils::unsetBit(int i, unsigned long long number)
+void Utils::unsetBit(unsigned long long i, unsigned long long *number)
 {
-    return number & (~(this->one << i));
+    *number &= ~i;
 }
 
-bool Utils::isBit(int i, unsigned long long number)
+bool Utils::isBit(unsigned long long i, unsigned long long number)
 {
-    return (number & (this->one << i)) == (this->one << i);
+    return (number & i) == i;
 }
 
 bool Utils::isPawnPromote(bool trait, int i)

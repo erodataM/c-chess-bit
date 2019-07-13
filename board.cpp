@@ -34,41 +34,41 @@ Board::Board(string fen)
     for (int i = 0; i < fenDiag.size(); ++i)
     {
         if (fenDiag.at(i) == 'p') {
-            this->pieces[0][0] = this->utils->setBit(count, this->pieces[0][0]);
+            this->utils->setBit(this->utils->ones[count], &this->pieces[0][0]);
             count++;
         } else if (fenDiag.at(i) == 'P') {
-            this->pieces[1][0] = this->utils->setBit(count, this->pieces[1][0]);
+            this->utils->setBit(this->utils->ones[count], &this->pieces[1][0]);
             count++;
         } else if (fenDiag.at(i) == 'n') {
-            this->pieces[0][1] = this->utils->setBit(count, this->pieces[0][1]);
+            this->utils->setBit(this->utils->ones[count], &this->pieces[0][1]);
             count++;
         } else if (fenDiag.at(i) == 'N') {
-            this->pieces[1][1] = this->utils->setBit(count, this->pieces[1][1]);
+            this->utils->setBit(this->utils->ones[count], &this->pieces[1][1]);
             count++;
         } else if (fenDiag.at(i) == 'b') {
-            this->pieces[0][2] = this->utils->setBit(count, this->pieces[0][2]);
+            this->utils->setBit(this->utils->ones[count], &this->pieces[0][2]);
             count++;
         } else if (fenDiag.at(i) == 'B') {
-            this->pieces[1][2] = this->utils->setBit(count, this->pieces[1][2]);
+            this->utils->setBit(this->utils->ones[count], &this->pieces[1][2]);
             count++;
         } else if (fenDiag.at(i) == 'r') {
-            this->pieces[0][3] = this->utils->setBit(count, this->pieces[0][3]);
+            this->utils->setBit(this->utils->ones[count], &this->pieces[0][3]);
             count++;
         } else if (fenDiag.at(i) == 'R') {
-            this->pieces[1][3] = this->utils->setBit(count, this->pieces[1][3]);
+            this->utils->setBit(this->utils->ones[count], &this->pieces[1][3]);
             count++;
         } else if (fenDiag.at(i) == 'q') {
-            this->pieces[0][4] = this->utils->setBit(count, this->pieces[0][4]);
+            this->utils->setBit(this->utils->ones[count], &this->pieces[0][4]);
             count++;
         } else if (fenDiag.at(i) == 'Q') {
-            this->pieces[1][4] = this->utils->setBit(count, this->pieces[1][4]);
+            this->utils->setBit(this->utils->ones[count], &this->pieces[1][4]);
             count++;
         } else if (fenDiag.at(i) == 'k') {
-            this->pieces[0][5] = this->utils->setBit(count, this->pieces[0][5]);
+            this->utils->setBit(this->utils->ones[count], &this->pieces[0][5]);
             this->kingPos[0] = count;
             count++;
         } else if (fenDiag.at(i) == 'K') {
-            this->pieces[1][5] = this->utils->setBit(count, this->pieces[1][5]);
+            this->utils->setBit(this->utils->ones[count], &this->pieces[1][5]);
             this->kingPos[1] = count;
             count++;
         } else if (isdigit(fenDiag.at(i))) {
@@ -129,29 +129,29 @@ void Board::initZobrist()
 
 int Board::getPieceAt(int i)
 {
-    if ((this->pieces[0][0] & this->utils->ones[i]) == this->utils->ones[i]) {
+    if (this->utils->isBit(this->utils->ones[i], this->pieces[0][0])) {
         return 0;
-    } else if ((this->pieces[0][1] & this->utils->ones[i]) == this->utils->ones[i]) {
+    } else if (this->utils->isBit(this->utils->ones[i], this->pieces[0][1])) {
         return 1;
-    } else if ((this->pieces[0][2] & this->utils->ones[i]) == this->utils->ones[i]) {
+    } else if (this->utils->isBit(this->utils->ones[i], this->pieces[0][2])) {
         return 2;
-    } else if ((this->pieces[0][3] & this->utils->ones[i]) == this->utils->ones[i]) {
+    } else if (this->utils->isBit(this->utils->ones[i], this->pieces[0][3])) {
         return 3;
-    } else if ((this->pieces[0][4] & this->utils->ones[i]) == this->utils->ones[i]) {
+    } else if (this->utils->isBit(this->utils->ones[i], this->pieces[0][4])) {
         return 4;
-    } else if ((this->pieces[0][5] & this->utils->ones[i]) == this->utils->ones[i]) {
+    } else if (this->utils->isBit(this->utils->ones[i], this->pieces[0][5])) {
         return 5;
-    } else if ((this->pieces[1][0] & this->utils->ones[i]) == this->utils->ones[i]) {
+    } else if (this->utils->isBit(this->utils->ones[i], this->pieces[1][0])) {
         return 6;
-    } else if ((this->pieces[1][1] & this->utils->ones[i]) == this->utils->ones[i]) {
+    } else if (this->utils->isBit(this->utils->ones[i], this->pieces[1][1])) {
         return 7;
-    } else if ((this->pieces[1][2] & this->utils->ones[i]) == this->utils->ones[i]) {
+    } else if (this->utils->isBit(this->utils->ones[i], this->pieces[1][2])) {
         return 8;
-    } else if ((this->pieces[1][3] & this->utils->ones[i]) == this->utils->ones[i]) {
+    } else if (this->utils->isBit(this->utils->ones[i], this->pieces[1][3])) {
         return 9;
-    } else if ((this->pieces[1][4] & this->utils->ones[i]) == this->utils->ones[i]) {
+    } else if (this->utils->isBit(this->utils->ones[i], this->pieces[1][4])) {
         return 10;
-    } else if ((this->pieces[1][5] & this->utils->ones[i]) == this->utils->ones[i]) {
+    } else if (this->utils->isBit(this->utils->ones[i], this->pieces[1][5])) {
         return 11;
     } else {
         // pas censé arriver :s
@@ -495,16 +495,16 @@ void Board::makeMove(vector<Move> moves, bool doit)
             this->kingPos[moves[i].trait] = doit ? moves[i].king[1] : moves[i].king[0];
         } else if (doit) {
             if (moves[i].doit) {
-                this->pieces[moves[i].trait][moves[i].pieceType] |= moves[i].value;
+                this->utils->setBit(moves[i].value, &this->pieces[moves[i].trait][moves[i].pieceType]);
             } else {
-                this->pieces[moves[i].trait][moves[i].pieceType] &= (~moves[i].value);
+                this->utils->unsetBit(moves[i].value, &this->pieces[moves[i].trait][moves[i].pieceType]);
             }
             this->zobristKey ^= this->zobristBoard[moves[i].position][(moves[i].trait*6)+moves[i].pieceType];
         } else {
             if (moves[i].doit) {
-                this->pieces[moves[i].trait][moves[i].pieceType] &= (~moves[i].value);
+                this->utils->unsetBit(moves[i].value, &this->pieces[moves[i].trait][moves[i].pieceType]);
             } else {
-                this->pieces[moves[i].trait][moves[i].pieceType] |= moves[i].value;
+                this->utils->setBit(moves[i].value, &this->pieces[moves[i].trait][moves[i].pieceType]);
             }
             this->zobristKey ^= this->zobristBoard[moves[i].position][(moves[i].trait*6)+moves[i].pieceType];
         }
@@ -517,49 +517,37 @@ void Board::makeMove(vector<Move> moves, bool doit)
 bool Board::isInCheck()
 {
     for (int i = 0; i < this->utils->pawnCapturesCachePosition[!this->trait][this->kingPos[!this->trait]].size(); ++i) {
-        if ((this->pieces[this->trait][0] & this->utils->pawnCapturesCachePosition[!this->trait][this->kingPos[!this->trait]][i])\
-            == this->utils->pawnCapturesCachePosition[!this->trait][this->kingPos[!this->trait]][i]) {
+        if (this->utils->isBit(this->utils->pawnCapturesCachePosition[!this->trait][this->kingPos[!this->trait]][i], this->pieces[this->trait][0])) {
             return true;
         }
     }
 
     for (int i = 0; i < this->utils->knightMovesCachePosition[this->kingPos[!this->trait]].size(); ++i) {
-        if ((this->pieces[this->trait][1] & this->utils->knightMovesCachePosition[this->kingPos[!this->trait]][i])\
-            == this->utils->knightMovesCachePosition[this->kingPos[!this->trait]][i]) {
+        if (this->utils->isBit(this->utils->knightMovesCachePosition[this->kingPos[!this->trait]][i], this->pieces[this->trait][1])) {
             return true;
         }
     }
 
     for (int i = 0; i < 4; ++i) {
         for (int j = 0; j < this->utils->bishopMovesCachePosition[this->kingPos[!this->trait]][i].size(); ++j) {
-            if (((this->pieces[this->trait][2] & this->utils->bishopMovesCachePosition[this->kingPos[!this->trait]][i][j])\
-                  == this->utils->bishopMovesCachePosition[this->kingPos[!this->trait]][i][j])
-                  || ((this->pieces[this->trait][4] & this->utils->bishopMovesCachePosition[this->kingPos[!this->trait]][i][j])\
-                  == this->utils->bishopMovesCachePosition[this->kingPos[!this->trait]][i][j])
-                  || ((j == 0) && ((this->pieces[this->trait][5] & this->utils->bishopMovesCachePosition[this->kingPos[!this->trait]][i][j])\
-                  == this->utils->bishopMovesCachePosition[this->kingPos[!this->trait]][i][j]))
+            if (this->utils->isBit(this->utils->bishopMovesCachePosition[this->kingPos[!this->trait]][i][j], this->pieces[this->trait][2])
+             || this->utils->isBit(this->utils->bishopMovesCachePosition[this->kingPos[!this->trait]][i][j], this->pieces[this->trait][4])
+             || ((j == 0) && this->utils->isBit(this->utils->bishopMovesCachePosition[this->kingPos[!this->trait]][i][j], this->pieces[this->trait][5]))
             ) {
                 return true;
             }
-            if (((board & this->utils->bishopMovesCachePosition[this->kingPos[!this->trait]][i][j])\
-                  == this->utils->bishopMovesCachePosition[this->kingPos[!this->trait]][i][j])
-                    ) {
+            if (this->utils->isBit(this->utils->bishopMovesCachePosition[this->kingPos[!this->trait]][i][j], board)) {
                 break;
             }
         }
         for (int j = 0; j < this->utils->rookMovesCachePosition[this->kingPos[!this->trait]][i].size(); ++j) {
-            if (((this->pieces[this->trait][3] & this->utils->rookMovesCachePosition[this->kingPos[!this->trait]][i][j])\
-                  == this->utils->rookMovesCachePosition[this->kingPos[!this->trait]][i][j])
-                || ((this->pieces[this->trait][4] & this->utils->rookMovesCachePosition[this->kingPos[!this->trait]][i][j])\
-                  == this->utils->rookMovesCachePosition[this->kingPos[!this->trait]][i][j])
-                || ((j == 0) && ((this->pieces[this->trait][5] & this->utils->rookMovesCachePosition[this->kingPos[!this->trait]][i][j])\
-                  == this->utils->rookMovesCachePosition[this->kingPos[!this->trait]][i][j]))
+            if (this->utils->isBit(this->utils->rookMovesCachePosition[this->kingPos[!this->trait]][i][j], this->pieces[this->trait][3])
+             || this->utils->isBit(this->utils->rookMovesCachePosition[this->kingPos[!this->trait]][i][j], this->pieces[this->trait][4])
+             || ((j == 0) && this->utils->isBit(this->utils->rookMovesCachePosition[this->kingPos[!this->trait]][i][j], this->pieces[this->trait][5]))
             ) {
                 return true;
             }
-            if (((board & this->utils->rookMovesCachePosition[this->kingPos[!this->trait]][i][j])\
-                  == this->utils->rookMovesCachePosition[this->kingPos[!this->trait]][i][j])
-            ) {
+            if (this->utils->isBit(this->utils->rookMovesCachePosition[this->kingPos[!this->trait]][i][j], board)) {
                 break;
             }
         }

@@ -32,9 +32,9 @@ public:
 
     Utils();
     unsigned long long getRand();
-    unsigned long long setBit(int, unsigned long long);
-    unsigned long long unsetBit(int, unsigned long long);
-    bool isBit(int, unsigned long long);
+    void setBit(unsigned long long, unsigned long long*);
+    void unsetBit(unsigned long long, unsigned long long*);
+    bool isBit(unsigned long long, unsigned long long);
     bool isPawnPromote(bool, int);
     bool isPawnFirstMove(bool, int);
     bool isInBoard(int, int);

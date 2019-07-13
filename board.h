@@ -9,7 +9,7 @@
 class Board
 {
 public:
-    Board(std::string);
+    explicit Board(std::string);
     Utils* utils;
     bool trait;
     int pep;
