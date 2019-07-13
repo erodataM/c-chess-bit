@@ -255,7 +255,7 @@ void Board::applyMove(vector<Move> *v, vector<vector<Move>> *moves)
 
 void Board::applyPawnMoves(int i, vector<vector<Move>> *moves)
 {
-    if ((this->board & this->utils->ones[i + this->utils->pawnMoves[this->trait]]) != this->utils->ones[i + this->utils->pawnMoves[this->trait]]) {
+    if (this->utils->isBit(this->utils->ones[i + this->utils->pawnMoves[this->trait]], this->board)) {
         if (this->utils->isPawnPromote(this->trait, i)) {
             for (int k = 1; k < 5; k++) {
                 vector<Move> v;
@@ -277,7 +277,7 @@ void Board::applyPawnMoves(int i, vector<vector<Move>> *moves)
         }
 
         if (this->utils->isPawnFirstMove(this->trait, i)) {
-            if ((this->board & this->utils->ones[i + this->utils->pawnMoves[this->trait] * 2]) != this->utils->ones[i + this->utils->pawnMoves[this->trait] * 2]) {
+            if (!this->utils->isBit(this->utils->ones[i + this->utils->pawnMoves[this->trait] * 2], this->board)) {
                 vector<Move> v;
                 v.emplace_back(0, this->trait, i, this->utils->ones[i], false);
                 v.emplace_back(0, this->trait, i + this->utils->pawnMoves[this->trait] * 2, this->utils->ones[i + this->utils->pawnMoves[this->trait] * 2], true);
@@ -288,7 +288,7 @@ void Board::applyPawnMoves(int i, vector<vector<Move>> *moves)
     }
 
     for (int j = 0 ; j < this->utils->pawnCapturesCachePosition[this->trait][i].size(); ++j) {
-        if (((this->trait ? this->black : this->white) & this->utils->pawnCapturesCachePosition[this->trait][i][j]) == this->utils->pawnCapturesCachePosition[this->trait][i][j]) {
+        if (this->utils->isBit(this->utils->pawnCapturesCachePosition[this->trait][i][j], this->trait ? this->black : this->white)) {
             if (this->utils->isPawnPromote(this->trait, i)) {
                 for (int k = 1; k < 5; ++k) {
                     vector<Move> v;
@@ -343,7 +343,7 @@ void Board::applyPawnMoves(int i, vector<vector<Move>> *moves)
 void Board::applyKnightMoves(int i, vector<vector<Move>> *moves)
 {
     for (int j = 0 ; j < this->utils->knightMovesCachePosition[i].size(); ++j) {
-        if (((this->trait ? this->white : this->black) & this->utils->knightMovesCachePosition[i][j]) != this->utils->knightMovesCachePosition[i][j]) {
+        if (!this->utils->isBit(this->utils->knightMovesCachePosition[i][j], this->trait ? this->white : this->black)) {
             vector<Move> v;
             v.emplace_back(1, this->trait, i, this->utils->ones[i], false);
             v.emplace_back(1, this->trait, this->utils->knightMovesCache[i][j], this->utils->knightMovesCachePosition[i][j], true);
@@ -368,14 +368,14 @@ void Board::applyBishopMoves(int i, vector<vector<Move>> *moves)
 {
     for (int j = 0; j < 4; ++j) {
         for (int k = 0; k < this->utils->bishopMovesCachePosition[i][j].size(); ++k) {
-            if (((this->trait ? this->white : this->black) & this->utils->bishopMovesCachePosition[i][j][k]) != this->utils->bishopMovesCachePosition[i][j][k]) {
+            if (!this->utils->isBit(this->utils->bishopMovesCachePosition[i][j][k], this->trait ? this->white : this->black)) {
                 vector<Move> v;
                 v.emplace_back(2, this->trait, i, this->utils->ones[i], false);
                 v.emplace_back(2, this->trait, this->utils->bishopMovesCache[i][j][k], this->utils->bishopMovesCachePosition[i][j][k], true);
                 if (this->pep != -1) {
                     v.emplace_back("pep", this->pep, -1);
                 }
-                if (((this->trait ? this->black : this->white) & this->utils->bishopMovesCachePosition[i][j][k]) == this->utils->bishopMovesCachePosition[i][j][k]) {
+                if (this->utils->isBit(this->utils->bishopMovesCachePosition[i][j][k], this->trait ? this->black : this->white)) {
                     v.emplace_back(\
                         this->getPieceAt(this->utils->bishopMovesCache[i][j][k]) % 6,\
                         !this->trait,\
@@ -399,14 +399,14 @@ void Board::applyRookMoves(int i, vector<vector<Move>> *moves)
 {
     for (int j = 0; j < 4; ++j) {
         for (int k = 0; k < this->utils->rookMovesCachePosition[i][j].size(); ++k) {
-            if (((this->trait ? this->white : this->black) & this->utils->rookMovesCachePosition[i][j][k]) != this->utils->rookMovesCachePosition[i][j][k]) {
+            if (!this->utils->isBit(this->utils->rookMovesCachePosition[i][j][k], this->trait ? this->white : this->black)) {
                 vector<Move> v;
                 v.emplace_back(3, this->trait, i, this->utils->ones[i], false);
                 v.emplace_back(3, this->trait, this->utils->rookMovesCache[i][j][k], this->utils->rookMovesCachePosition[i][j][k], true);
                 if (this->pep != -1) {
                     v.emplace_back("pep", this->pep, -1);
                 }
-                if (((this->trait ? this->black : this->white) & this->utils->rookMovesCachePosition[i][j][k]) == this->utils->rookMovesCachePosition[i][j][k]) {
+                if (this->utils->isBit(this->utils->rookMovesCachePosition[i][j][k], this->trait ? this->black : this->white)) {
                     v.emplace_back(\
                         this->getPieceAt(this->utils->rookMovesCache[i][j][k]) % 6,\
                         !this->trait,\
@@ -430,7 +430,7 @@ void Board::applyQueenMoves(int i, vector<vector<Move>> *moves)
 {
     for (int j = 0; j < 8; ++j) {
         for (int k = 0; k < this->utils->queenMovesCachePosition[i][j].size(); ++k) {
-            if (((this->trait ? this->white : this->black) & this->utils->queenMovesCachePosition[i][j][k]) != this->utils->queenMovesCachePosition[i][j][k]) {
+            if (!this->utils->isBit(this->utils->queenMovesCachePosition[i][j][k], this->trait ? this->white : this->black)) {
                 vector<Move> v;
                 v.emplace_back(4, this->trait, i, this->utils->ones[i], false);
                 v.emplace_back(4, this->trait, this->utils->queenMovesCache[i][j][k], this->utils->queenMovesCachePosition[i][j][k], true);
@@ -438,8 +438,7 @@ void Board::applyQueenMoves(int i, vector<vector<Move>> *moves)
                 if (this->pep != -1) {
                     v.emplace_back("pep", this->pep, -1);
                 }
-
-                if (((this->trait ? this->black : this->white) & this->utils->queenMovesCachePosition[i][j][k]) == this->utils->queenMovesCachePosition[i][j][k]) {
+                if (this->utils->isBit(this->utils->queenMovesCachePosition[i][j][k], this->trait ? this->black : this->white)) {
                     v.emplace_back(\
                         this->getPieceAt(this->utils->queenMovesCache[i][j][k]) % 6,\
                         !this->trait,\
@@ -462,7 +461,7 @@ void Board::applyQueenMoves(int i, vector<vector<Move>> *moves)
 void Board::applyKingMoves(int i, vector<vector<Move>> *moves)
 {
     for (int j = 0 ; j < this->utils->kingMovesCachePosition[i].size(); ++j) {
-        if (((this->trait ? this->white : this->black) & this->utils->kingMovesCachePosition[i][j]) != this->utils->kingMovesCachePosition[i][j]) {
+        if (!this->utils->isBit(this->utils->kingMovesCachePosition[i][j], this->trait ? this->white : this->black)) {
             vector<Move> v;
             v.emplace_back(5, this->trait, i, this->utils->ones[i], false);
             v.emplace_back(5, this->trait, this->utils->kingMovesCache[i][j], this->utils->kingMovesCachePosition[i][j], true);
@@ -470,7 +469,7 @@ void Board::applyKingMoves(int i, vector<vector<Move>> *moves)
                 v.emplace_back("pep", this->pep, -1);
             }
             v.emplace_back("kingpos", i, this->utils->kingMovesCache[i][j], this->trait);
-            if (((this->trait ? this->black : this->white) & this->utils->kingMovesCachePosition[i][j]) == this->utils->kingMovesCachePosition[i][j]) {
+            if (this->utils->isBit(this->utils->kingMovesCachePosition[i][j], this->trait ? this->black : this->white)) {
                 v.emplace_back(\
                     this->getPieceAt(this->utils->kingMovesCache[i][j]) % 6,\
                     !this->trait,\
