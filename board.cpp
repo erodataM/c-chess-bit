@@ -34,41 +34,41 @@ Board::Board(string fen)
     for (int i = 0; i < fenDiag.size(); ++i)
     {
         if (fenDiag.at(i) == 'p') {
-            this->utils->setBit(this->utils->ones[count], &this->pieces[0][0]);
+            Utils::setBit(this->utils->ones[count], &this->pieces[0][0]);
             count++;
         } else if (fenDiag.at(i) == 'P') {
-            this->utils->setBit(this->utils->ones[count], &this->pieces[1][0]);
+            Utils::setBit(this->utils->ones[count], &this->pieces[1][0]);
             count++;
         } else if (fenDiag.at(i) == 'n') {
-            this->utils->setBit(this->utils->ones[count], &this->pieces[0][1]);
+            Utils::setBit(this->utils->ones[count], &this->pieces[0][1]);
             count++;
         } else if (fenDiag.at(i) == 'N') {
-            this->utils->setBit(this->utils->ones[count], &this->pieces[1][1]);
+            Utils::setBit(this->utils->ones[count], &this->pieces[1][1]);
             count++;
         } else if (fenDiag.at(i) == 'b') {
-            this->utils->setBit(this->utils->ones[count], &this->pieces[0][2]);
+            Utils::setBit(this->utils->ones[count], &this->pieces[0][2]);
             count++;
         } else if (fenDiag.at(i) == 'B') {
-            this->utils->setBit(this->utils->ones[count], &this->pieces[1][2]);
+            Utils::setBit(this->utils->ones[count], &this->pieces[1][2]);
             count++;
         } else if (fenDiag.at(i) == 'r') {
-            this->utils->setBit(this->utils->ones[count], &this->pieces[0][3]);
+            Utils::setBit(this->utils->ones[count], &this->pieces[0][3]);
             count++;
         } else if (fenDiag.at(i) == 'R') {
-            this->utils->setBit(this->utils->ones[count], &this->pieces[1][3]);
+            Utils::setBit(this->utils->ones[count], &this->pieces[1][3]);
             count++;
         } else if (fenDiag.at(i) == 'q') {
-            this->utils->setBit(this->utils->ones[count], &this->pieces[0][4]);
+            Utils::setBit(this->utils->ones[count], &this->pieces[0][4]);
             count++;
         } else if (fenDiag.at(i) == 'Q') {
-            this->utils->setBit(this->utils->ones[count], &this->pieces[1][4]);
+            Utils::setBit(this->utils->ones[count], &this->pieces[1][4]);
             count++;
         } else if (fenDiag.at(i) == 'k') {
-            this->utils->setBit(this->utils->ones[count], &this->pieces[0][5]);
+            Utils::setBit(this->utils->ones[count], &this->pieces[0][5]);
             this->kingPos[0] = count;
             count++;
         } else if (fenDiag.at(i) == 'K') {
-            this->utils->setBit(this->utils->ones[count], &this->pieces[1][5]);
+            Utils::setBit(this->utils->ones[count], &this->pieces[1][5]);
             this->kingPos[1] = count;
             count++;
         } else if (isdigit(fenDiag.at(i))) {
@@ -129,29 +129,29 @@ void Board::initZobrist()
 
 int Board::getPieceAt(int i)
 {
-    if (this->utils->isBit(this->utils->ones[i], this->pieces[0][0])) {
+    if (Utils::isBit(this->utils->ones[i], this->pieces[0][0])) {
         return 0;
-    } else if (this->utils->isBit(this->utils->ones[i], this->pieces[0][1])) {
+    } else if (Utils::isBit(this->utils->ones[i], this->pieces[0][1])) {
         return 1;
-    } else if (this->utils->isBit(this->utils->ones[i], this->pieces[0][2])) {
+    } else if (Utils::isBit(this->utils->ones[i], this->pieces[0][2])) {
         return 2;
-    } else if (this->utils->isBit(this->utils->ones[i], this->pieces[0][3])) {
+    } else if (Utils::isBit(this->utils->ones[i], this->pieces[0][3])) {
         return 3;
-    } else if (this->utils->isBit(this->utils->ones[i], this->pieces[0][4])) {
+    } else if (Utils::isBit(this->utils->ones[i], this->pieces[0][4])) {
         return 4;
-    } else if (this->utils->isBit(this->utils->ones[i], this->pieces[0][5])) {
+    } else if (Utils::isBit(this->utils->ones[i], this->pieces[0][5])) {
         return 5;
-    } else if (this->utils->isBit(this->utils->ones[i], this->pieces[1][0])) {
+    } else if (Utils::isBit(this->utils->ones[i], this->pieces[1][0])) {
         return 6;
-    } else if (this->utils->isBit(this->utils->ones[i], this->pieces[1][1])) {
+    } else if (Utils::isBit(this->utils->ones[i], this->pieces[1][1])) {
         return 7;
-    } else if (this->utils->isBit(this->utils->ones[i], this->pieces[1][2])) {
+    } else if (Utils::isBit(this->utils->ones[i], this->pieces[1][2])) {
         return 8;
-    } else if (this->utils->isBit(this->utils->ones[i], this->pieces[1][3])) {
+    } else if (Utils::isBit(this->utils->ones[i], this->pieces[1][3])) {
         return 9;
-    } else if (this->utils->isBit(this->utils->ones[i], this->pieces[1][4])) {
+    } else if (Utils::isBit(this->utils->ones[i], this->pieces[1][4])) {
         return 10;
-    } else if (this->utils->isBit(this->utils->ones[i], this->pieces[1][5])) {
+    } else if (Utils::isBit(this->utils->ones[i], this->pieces[1][5])) {
         return 11;
     } else {
         // pas censé arriver :s
@@ -222,22 +222,22 @@ vector<vector<Move>> Board::getMoves()
 {
     vector<vector<Move>> moves;
     for (int i = 0; i < 64; ++i) {
-        if ((this->pieces[this->trait][0] & this->utils->ones[i]) == this->utils->ones[i]) {
+        if (Utils::isBit(this->utils->ones[i], this->pieces[this->trait][0])) {
             this->applyPawnMoves(i, &moves);
         }
-        if ((this->pieces[this->trait][1] & this->utils->ones[i]) == this->utils->ones[i]) {
+        if (Utils::isBit(this->utils->ones[i], this->pieces[this->trait][1])) {
             this->applyKnightMoves(i, &moves);
         }
-        if ((this->pieces[this->trait][2] & this->utils->ones[i]) == this->utils->ones[i]) {
+        if (Utils::isBit(this->utils->ones[i], this->pieces[this->trait][2])) {
             this->applyBishopMoves(i, &moves);
         }
-        if ((this->pieces[this->trait][3] & this->utils->ones[i]) == this->utils->ones[i]) {
+        if (Utils::isBit(this->utils->ones[i], this->pieces[this->trait][3])) {
             this->applyRookMoves(i, &moves);
         }
-        if ((this->pieces[this->trait][4] & this->utils->ones[i]) == this->utils->ones[i]) {
+        if (Utils::isBit(this->utils->ones[i], this->pieces[this->trait][4])) {
             this->applyQueenMoves(i, &moves);
         }
-        if ((this->pieces[this->trait][5] & this->utils->ones[i]) == this->utils->ones[i]) {
+        if (Utils::isBit(this->utils->ones[i], this->pieces[this->trait][5])) {
             this->applyKingMoves(i, &moves);
         }
     }
@@ -255,8 +255,8 @@ void Board::applyMove(vector<Move> *v, vector<vector<Move>> *moves)
 
 void Board::applyPawnMoves(int i, vector<vector<Move>> *moves)
 {
-    if (this->utils->isBit(this->utils->ones[i + this->utils->pawnMoves[this->trait]], this->board)) {
-        if (this->utils->isPawnPromote(this->trait, i)) {
+    if (!Utils::isBit(this->utils->ones[i + this->utils->pawnMoves[this->trait]], this->board)) {
+        if (Utils::isPawnPromote(this->trait, i)) {
             for (int k = 1; k < 5; k++) {
                 vector<Move> v;
                 v.emplace_back(0, this->trait, i, this->utils->ones[i], false);
@@ -276,8 +276,8 @@ void Board::applyPawnMoves(int i, vector<vector<Move>> *moves)
             this->applyMove(&v, moves);
         }
 
-        if (this->utils->isPawnFirstMove(this->trait, i)) {
-            if (!this->utils->isBit(this->utils->ones[i + this->utils->pawnMoves[this->trait] * 2], this->board)) {
+        if (Utils::isPawnFirstMove(this->trait, i)) {
+            if (!Utils::isBit(this->utils->ones[i + this->utils->pawnMoves[this->trait] * 2], this->board)) {
                 vector<Move> v;
                 v.emplace_back(0, this->trait, i, this->utils->ones[i], false);
                 v.emplace_back(0, this->trait, i + this->utils->pawnMoves[this->trait] * 2, this->utils->ones[i + this->utils->pawnMoves[this->trait] * 2], true);
@@ -288,8 +288,8 @@ void Board::applyPawnMoves(int i, vector<vector<Move>> *moves)
     }
 
     for (int j = 0 ; j < this->utils->pawnCapturesCachePosition[this->trait][i].size(); ++j) {
-        if (this->utils->isBit(this->utils->pawnCapturesCachePosition[this->trait][i][j], this->trait ? this->black : this->white)) {
-            if (this->utils->isPawnPromote(this->trait, i)) {
+        if (Utils::isBit(this->utils->pawnCapturesCachePosition[this->trait][i][j], this->trait ? this->black : this->white)) {
+            if (Utils::isPawnPromote(this->trait, i)) {
                 for (int k = 1; k < 5; ++k) {
                     vector<Move> v;
                     v.emplace_back(0, this->trait, i, this->utils->ones[i], false);
@@ -343,7 +343,7 @@ void Board::applyPawnMoves(int i, vector<vector<Move>> *moves)
 void Board::applyKnightMoves(int i, vector<vector<Move>> *moves)
 {
     for (int j = 0 ; j < this->utils->knightMovesCachePosition[i].size(); ++j) {
-        if (!this->utils->isBit(this->utils->knightMovesCachePosition[i][j], this->trait ? this->white : this->black)) {
+        if (!Utils::isBit(this->utils->knightMovesCachePosition[i][j], this->trait ? this->white : this->black)) {
             vector<Move> v;
             v.emplace_back(1, this->trait, i, this->utils->ones[i], false);
             v.emplace_back(1, this->trait, this->utils->knightMovesCache[i][j], this->utils->knightMovesCachePosition[i][j], true);
@@ -368,14 +368,14 @@ void Board::applyBishopMoves(int i, vector<vector<Move>> *moves)
 {
     for (int j = 0; j < 4; ++j) {
         for (int k = 0; k < this->utils->bishopMovesCachePosition[i][j].size(); ++k) {
-            if (!this->utils->isBit(this->utils->bishopMovesCachePosition[i][j][k], this->trait ? this->white : this->black)) {
+            if (!Utils::isBit(this->utils->bishopMovesCachePosition[i][j][k], this->trait ? this->white : this->black)) {
                 vector<Move> v;
                 v.emplace_back(2, this->trait, i, this->utils->ones[i], false);
                 v.emplace_back(2, this->trait, this->utils->bishopMovesCache[i][j][k], this->utils->bishopMovesCachePosition[i][j][k], true);
                 if (this->pep != -1) {
                     v.emplace_back("pep", this->pep, -1);
                 }
-                if (this->utils->isBit(this->utils->bishopMovesCachePosition[i][j][k], this->trait ? this->black : this->white)) {
+                if (Utils::isBit(this->utils->bishopMovesCachePosition[i][j][k], this->trait ? this->black : this->white)) {
                     v.emplace_back(\
                         this->getPieceAt(this->utils->bishopMovesCache[i][j][k]) % 6,\
                         !this->trait,\
@@ -399,14 +399,14 @@ void Board::applyRookMoves(int i, vector<vector<Move>> *moves)
 {
     for (int j = 0; j < 4; ++j) {
         for (int k = 0; k < this->utils->rookMovesCachePosition[i][j].size(); ++k) {
-            if (!this->utils->isBit(this->utils->rookMovesCachePosition[i][j][k], this->trait ? this->white : this->black)) {
+            if (!Utils::isBit(this->utils->rookMovesCachePosition[i][j][k], this->trait ? this->white : this->black)) {
                 vector<Move> v;
                 v.emplace_back(3, this->trait, i, this->utils->ones[i], false);
                 v.emplace_back(3, this->trait, this->utils->rookMovesCache[i][j][k], this->utils->rookMovesCachePosition[i][j][k], true);
                 if (this->pep != -1) {
                     v.emplace_back("pep", this->pep, -1);
                 }
-                if (this->utils->isBit(this->utils->rookMovesCachePosition[i][j][k], this->trait ? this->black : this->white)) {
+                if (Utils::isBit(this->utils->rookMovesCachePosition[i][j][k], this->trait ? this->black : this->white)) {
                     v.emplace_back(\
                         this->getPieceAt(this->utils->rookMovesCache[i][j][k]) % 6,\
                         !this->trait,\
@@ -430,7 +430,7 @@ void Board::applyQueenMoves(int i, vector<vector<Move>> *moves)
 {
     for (int j = 0; j < 8; ++j) {
         for (int k = 0; k < this->utils->queenMovesCachePosition[i][j].size(); ++k) {
-            if (!this->utils->isBit(this->utils->queenMovesCachePosition[i][j][k], this->trait ? this->white : this->black)) {
+            if (!Utils::isBit(this->utils->queenMovesCachePosition[i][j][k], this->trait ? this->white : this->black)) {
                 vector<Move> v;
                 v.emplace_back(4, this->trait, i, this->utils->ones[i], false);
                 v.emplace_back(4, this->trait, this->utils->queenMovesCache[i][j][k], this->utils->queenMovesCachePosition[i][j][k], true);
@@ -438,7 +438,7 @@ void Board::applyQueenMoves(int i, vector<vector<Move>> *moves)
                 if (this->pep != -1) {
                     v.emplace_back("pep", this->pep, -1);
                 }
-                if (this->utils->isBit(this->utils->queenMovesCachePosition[i][j][k], this->trait ? this->black : this->white)) {
+                if (Utils::isBit(this->utils->queenMovesCachePosition[i][j][k], this->trait ? this->black : this->white)) {
                     v.emplace_back(\
                         this->getPieceAt(this->utils->queenMovesCache[i][j][k]) % 6,\
                         !this->trait,\
@@ -461,7 +461,7 @@ void Board::applyQueenMoves(int i, vector<vector<Move>> *moves)
 void Board::applyKingMoves(int i, vector<vector<Move>> *moves)
 {
     for (int j = 0 ; j < this->utils->kingMovesCachePosition[i].size(); ++j) {
-        if (!this->utils->isBit(this->utils->kingMovesCachePosition[i][j], this->trait ? this->white : this->black)) {
+        if (!Utils::isBit(this->utils->kingMovesCachePosition[i][j], this->trait ? this->white : this->black)) {
             vector<Move> v;
             v.emplace_back(5, this->trait, i, this->utils->ones[i], false);
             v.emplace_back(5, this->trait, this->utils->kingMovesCache[i][j], this->utils->kingMovesCachePosition[i][j], true);
@@ -469,7 +469,7 @@ void Board::applyKingMoves(int i, vector<vector<Move>> *moves)
                 v.emplace_back("pep", this->pep, -1);
             }
             v.emplace_back("kingpos", i, this->utils->kingMovesCache[i][j], this->trait);
-            if (this->utils->isBit(this->utils->kingMovesCachePosition[i][j], this->trait ? this->black : this->white)) {
+            if (Utils::isBit(this->utils->kingMovesCachePosition[i][j], this->trait ? this->black : this->white)) {
                 v.emplace_back(\
                     this->getPieceAt(this->utils->kingMovesCache[i][j]) % 6,\
                     !this->trait,\
@@ -480,6 +480,10 @@ void Board::applyKingMoves(int i, vector<vector<Move>> *moves)
             }
             this->applyMove(&v, moves);
         }
+    }
+
+    if (this->shortCastles[this->trait] && !Utils::isBit(this->utils->shortCastlesCache[this->trait], this->board)) {
+
     }
 }
 
@@ -494,16 +498,16 @@ void Board::makeMove(vector<Move> moves, bool doit)
             this->kingPos[moves[i].trait] = doit ? moves[i].king[1] : moves[i].king[0];
         } else if (doit) {
             if (moves[i].doit) {
-                this->utils->setBit(moves[i].value, &this->pieces[moves[i].trait][moves[i].pieceType]);
+                Utils::setBit(moves[i].value, &this->pieces[moves[i].trait][moves[i].pieceType]);
             } else {
-                this->utils->unsetBit(moves[i].value, &this->pieces[moves[i].trait][moves[i].pieceType]);
+                Utils::unsetBit(moves[i].value, &this->pieces[moves[i].trait][moves[i].pieceType]);
             }
             this->zobristKey ^= this->zobristBoard[moves[i].position][(moves[i].trait*6)+moves[i].pieceType];
         } else {
             if (moves[i].doit) {
-                this->utils->unsetBit(moves[i].value, &this->pieces[moves[i].trait][moves[i].pieceType]);
+                Utils::unsetBit(moves[i].value, &this->pieces[moves[i].trait][moves[i].pieceType]);
             } else {
-                this->utils->setBit(moves[i].value, &this->pieces[moves[i].trait][moves[i].pieceType]);
+                Utils::setBit(moves[i].value, &this->pieces[moves[i].trait][moves[i].pieceType]);
             }
             this->zobristKey ^= this->zobristBoard[moves[i].position][(moves[i].trait*6)+moves[i].pieceType];
         }
@@ -516,37 +520,37 @@ void Board::makeMove(vector<Move> moves, bool doit)
 bool Board::isInCheck()
 {
     for (int i = 0; i < this->utils->pawnCapturesCachePosition[!this->trait][this->kingPos[!this->trait]].size(); ++i) {
-        if (this->utils->isBit(this->utils->pawnCapturesCachePosition[!this->trait][this->kingPos[!this->trait]][i], this->pieces[this->trait][0])) {
+        if (Utils::isBit(this->utils->pawnCapturesCachePosition[!this->trait][this->kingPos[!this->trait]][i], this->pieces[this->trait][0])) {
             return true;
         }
     }
 
     for (int i = 0; i < this->utils->knightMovesCachePosition[this->kingPos[!this->trait]].size(); ++i) {
-        if (this->utils->isBit(this->utils->knightMovesCachePosition[this->kingPos[!this->trait]][i], this->pieces[this->trait][1])) {
+        if (Utils::isBit(this->utils->knightMovesCachePosition[this->kingPos[!this->trait]][i], this->pieces[this->trait][1])) {
             return true;
         }
     }
 
     for (int i = 0; i < 4; ++i) {
         for (int j = 0; j < this->utils->bishopMovesCachePosition[this->kingPos[!this->trait]][i].size(); ++j) {
-            if (this->utils->isBit(this->utils->bishopMovesCachePosition[this->kingPos[!this->trait]][i][j], this->pieces[this->trait][2])
-             || this->utils->isBit(this->utils->bishopMovesCachePosition[this->kingPos[!this->trait]][i][j], this->pieces[this->trait][4])
-             || ((j == 0) && this->utils->isBit(this->utils->bishopMovesCachePosition[this->kingPos[!this->trait]][i][j], this->pieces[this->trait][5]))
+            if (Utils::isBit(this->utils->bishopMovesCachePosition[this->kingPos[!this->trait]][i][j], this->pieces[this->trait][2])
+             || Utils::isBit(this->utils->bishopMovesCachePosition[this->kingPos[!this->trait]][i][j], this->pieces[this->trait][4])
+             || ((j == 0) && Utils::isBit(this->utils->bishopMovesCachePosition[this->kingPos[!this->trait]][i][j], this->pieces[this->trait][5]))
             ) {
                 return true;
             }
-            if (this->utils->isBit(this->utils->bishopMovesCachePosition[this->kingPos[!this->trait]][i][j], board)) {
+            if (Utils::isBit(this->utils->bishopMovesCachePosition[this->kingPos[!this->trait]][i][j], board)) {
                 break;
             }
         }
         for (int j = 0; j < this->utils->rookMovesCachePosition[this->kingPos[!this->trait]][i].size(); ++j) {
-            if (this->utils->isBit(this->utils->rookMovesCachePosition[this->kingPos[!this->trait]][i][j], this->pieces[this->trait][3])
-             || this->utils->isBit(this->utils->rookMovesCachePosition[this->kingPos[!this->trait]][i][j], this->pieces[this->trait][4])
-             || ((j == 0) && this->utils->isBit(this->utils->rookMovesCachePosition[this->kingPos[!this->trait]][i][j], this->pieces[this->trait][5]))
+            if (Utils::isBit(this->utils->rookMovesCachePosition[this->kingPos[!this->trait]][i][j], this->pieces[this->trait][3])
+             || Utils::isBit(this->utils->rookMovesCachePosition[this->kingPos[!this->trait]][i][j], this->pieces[this->trait][4])
+             || ((j == 0) && Utils::isBit(this->utils->rookMovesCachePosition[this->kingPos[!this->trait]][i][j], this->pieces[this->trait][5]))
             ) {
                 return true;
             }
-            if (this->utils->isBit(this->utils->rookMovesCachePosition[this->kingPos[!this->trait]][i][j], board)) {
+            if (Utils::isBit(this->utils->rookMovesCachePosition[this->kingPos[!this->trait]][i][j], board)) {
                 break;
             }
         }

@@ -30,13 +30,16 @@ public:
     std::vector<int> kingMovesCache[64];
     std::vector<unsigned long long> kingMovesCachePosition[64];
 
+    unsigned long long shortCastlesCache[2];
+    unsigned long long longCastlesCache[2];
+
     Utils();
     unsigned long long getRand();
-    void setBit(unsigned long long, unsigned long long*);
-    void unsetBit(unsigned long long, unsigned long long*);
-    bool isBit(unsigned long long, unsigned long long);
-    bool isPawnPromote(bool, int);
-    bool isPawnFirstMove(bool, int);
+    static void setBit(unsigned long long, unsigned long long*);
+    static void unsetBit(unsigned long long, unsigned long long*);
+    static bool isBit(unsigned long long, unsigned long long);
+    static bool isPawnPromote(bool, int);
+    static bool isPawnFirstMove(bool, int);
     bool isInBoard(int, int);
 
 private:

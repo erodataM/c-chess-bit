@@ -25,9 +25,9 @@ void perft(Board board, int depth) {
             moves = hashtable[board.zobristKey];
         }
         for (int i = 0; i < moves.size(); ++i) {
-            board.makeMove(moves[i], 1);
+            board.makeMove(moves[i], true);
             perft(board, depth - 1);
-            board.makeMove(moves[i], 0);
+            board.makeMove(moves[i], false);
         }
     }
 }
