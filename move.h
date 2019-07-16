@@ -8,8 +8,10 @@ public:
     Move(int, bool, int, unsigned long long, bool);
     Move(std::string, int, int);
     Move(std::string, int, int, bool);
+    Move(std::string, bool, bool);
     int pieceType;
     bool trait;
+    bool side;
     int position;
     unsigned long long value;
     int pep[2];

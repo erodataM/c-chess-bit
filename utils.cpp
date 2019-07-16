@@ -2,6 +2,7 @@
 
 #include <random>
 #include <iostream>
+#include <bitset>
 
 Utils::Utils()
 {
@@ -13,16 +14,16 @@ Utils::Utils()
     for (int i = 0; i < 64; ++i) {
         this->ones[i] = this->one << i;
         if (i == 61 || i == 62) {
-            Utils::setBit(this->ones[1], &this->shortCastlesCache[1]);
+            Utils::setBit(this->ones[i], &this->shortCastlesCache[1]);
         }
         if (i == 59 || i == 58 || i == 57) {
-            Utils::setBit(this->ones[1], &this->longCastlesCache[1]);
+            Utils::setBit(this->ones[i], &this->longCastlesCache[1]);
         }
         if (i == 5 || i == 6) {
-            Utils::setBit(this->ones[1], &this->shortCastlesCache[0]);
+            Utils::setBit(this->ones[i], &this->shortCastlesCache[0]);
         }
         if (i == 3 || i == 2 || i == 1) {
-            Utils::setBit(this->ones[1], &this->longCastlesCache[0]);
+            Utils::setBit(this->ones[i], &this->longCastlesCache[0]);
         }
     }
 

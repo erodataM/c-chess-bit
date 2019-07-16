@@ -27,10 +27,13 @@ public:
     std::vector<std::vector<Move>> getMoves();
     void makeMove(std::vector<Move>, bool);
 
+    std::string getFen();
+
 private:
     unsigned long long zobristBoard[64][13];
     unsigned long long zobristTrait[2];
     unsigned long long zobristPep[65];
+    unsigned long long zobristCastle[4];
 
     void initZobrist();
     void init();

@@ -23,3 +23,11 @@ Move::Move(std::string type, int prev, int next, bool trait)
     this->king[0] = prev;
     this->king[1] = next;
 }
+
+Move::Move(std::string type, bool trait, bool side)
+{
+    this->type = type;
+    this->trait = trait;
+    this->side = side;
+}
+
