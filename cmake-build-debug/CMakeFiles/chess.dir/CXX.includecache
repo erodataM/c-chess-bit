@@ -6,35 +6,35 @@
 
 #IncludeRegexTransform: 
 
-E:/dev/chess/board.h
-utils.h
-E:/dev/chess/utils.h
+C:/Users/Lionel/c++/c-chess-bit/board.cpp
+board.h
+C:/Users/Lionel/c++/c-chess-bit/board.h
 move.h
-E:/dev/chess/move.h
+C:/Users/Lionel/c++/c-chess-bit/move.h
+iostream
+-
+bitset
+-
 string
 -
 vector
 -
 
-E:/dev/chess/main.cpp
-board.h
-E:/dev/chess/board.h
+C:/Users/Lionel/c++/c-chess-bit/board.h
+utils.h
+C:/Users/Lionel/c++/c-chess-bit/utils.h
 move.h
-E:/dev/chess/move.h
-iostream
+C:/Users/Lionel/c++/c-chess-bit/move.h
+string
 -
 vector
 -
-chrono
--
-unordered_map
--
 
-E:/dev/chess/move.h
+C:/Users/Lionel/c++/c-chess-bit/move.h
 utils.h
-E:/dev/chess/utils.h
+C:/Users/Lionel/c++/c-chess-bit/utils.h
 
-E:/dev/chess/utils.h
+C:/Users/Lionel/c++/c-chess-bit/utils.h
 random
 -
 vector

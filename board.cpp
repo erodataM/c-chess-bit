@@ -435,16 +435,21 @@ void Board::applyRookMoves(int i, vector<vector<Move>> *moves)
                         this->utils->rookMovesCachePosition[i][j][k],\
                         false\
                     );
-                    if (this->shortCastles[this->trait] && (i == this->trait ? 63 : 7)) {
+                    if (this->shortCastles[this->trait] && (i == (this->trait ? 63 : 7))) {
                         v.emplace_back("castle", this->trait, false);
                     }
-                    if (this->longCastles[this->trait] && (i == this->trait ? 56 : 0)) {
+                    if (this->longCastles[this->trait] && (i == (this->trait ? 56 : 0))) {
                         v.emplace_back("castle", this->trait, true);
                     }
                     this->applyMove(&v, moves);
                     break;
                 } else {
-
+                    if (this->shortCastles[this->trait] && (i == (this->trait ? 63 : 7))) {
+                        v.emplace_back("castle", this->trait, false);
+                    }
+                    if (this->longCastles[this->trait] && (i == (this->trait ? 56 : 0))) {
+                        v.emplace_back("castle", this->trait, true);
+                    }
                     this->applyMove(&v, moves);
                 }
             } else {
@@ -576,6 +581,7 @@ void Board::applyKingMoves(int i, vector<vector<Move>> *moves)
                                             this->utils->ones[this->trait ? 56 : 0], false);
                     longCastle.emplace_back(3, this->trait, firstCache, firstCachePosition, true);
                     longCastle.emplace_back("kingpos", i, secondCache, this->trait);
+
                     longCastle.emplace_back("castle", this->trait, false);
                     longCastle.emplace_back("castle", this->trait, true);
                     if (this->pep != -1) {
