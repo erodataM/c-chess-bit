@@ -33,19 +33,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2019.1.4\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "E:\CLion 2019.1.4\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\JetBrains\CLion 2019.1.4\bin\cmake\win\bin\cmake.exe" -E remove -f
+RM = "E:\CLion 2019.1.4\bin\cmake\win\bin\cmake.exe" -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Lionel\c++\c-chess-bit
+CMAKE_SOURCE_DIR = E:\dev\chess
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Lionel\c++\c-chess-bit\cmake-build-debug
+CMAKE_BINARY_DIR = E:\dev\chess\cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/chess.dir/depend.make
@@ -58,55 +58,55 @@ include CMakeFiles/chess.dir/flags.make
 
 CMakeFiles/chess.dir/main.cpp.obj: CMakeFiles/chess.dir/flags.make
 CMakeFiles/chess.dir/main.cpp.obj: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Lionel\c++\c-chess-bit\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/chess.dir/main.cpp.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\chess.dir\main.cpp.obj -c C:\Users\Lionel\c++\c-chess-bit\main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\dev\chess\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/chess.dir/main.cpp.obj"
+	E:\dev\mingw\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\chess.dir\main.cpp.obj -c E:\dev\chess\main.cpp
 
 CMakeFiles/chess.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/chess.dir/main.cpp.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Lionel\c++\c-chess-bit\main.cpp > CMakeFiles\chess.dir\main.cpp.i
+	E:\dev\mingw\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\dev\chess\main.cpp > CMakeFiles\chess.dir\main.cpp.i
 
 CMakeFiles/chess.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/chess.dir/main.cpp.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Lionel\c++\c-chess-bit\main.cpp -o CMakeFiles\chess.dir\main.cpp.s
+	E:\dev\mingw\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\dev\chess\main.cpp -o CMakeFiles\chess.dir\main.cpp.s
 
 CMakeFiles/chess.dir/utils.cpp.obj: CMakeFiles/chess.dir/flags.make
 CMakeFiles/chess.dir/utils.cpp.obj: ../utils.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Lionel\c++\c-chess-bit\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/chess.dir/utils.cpp.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\chess.dir\utils.cpp.obj -c C:\Users\Lionel\c++\c-chess-bit\utils.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\dev\chess\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/chess.dir/utils.cpp.obj"
+	E:\dev\mingw\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\chess.dir\utils.cpp.obj -c E:\dev\chess\utils.cpp
 
 CMakeFiles/chess.dir/utils.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/chess.dir/utils.cpp.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Lionel\c++\c-chess-bit\utils.cpp > CMakeFiles\chess.dir\utils.cpp.i
+	E:\dev\mingw\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\dev\chess\utils.cpp > CMakeFiles\chess.dir\utils.cpp.i
 
 CMakeFiles/chess.dir/utils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/chess.dir/utils.cpp.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Lionel\c++\c-chess-bit\utils.cpp -o CMakeFiles\chess.dir\utils.cpp.s
+	E:\dev\mingw\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\dev\chess\utils.cpp -o CMakeFiles\chess.dir\utils.cpp.s
 
 CMakeFiles/chess.dir/move.cpp.obj: CMakeFiles/chess.dir/flags.make
 CMakeFiles/chess.dir/move.cpp.obj: ../move.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Lionel\c++\c-chess-bit\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/chess.dir/move.cpp.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\chess.dir\move.cpp.obj -c C:\Users\Lionel\c++\c-chess-bit\move.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\dev\chess\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/chess.dir/move.cpp.obj"
+	E:\dev\mingw\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\chess.dir\move.cpp.obj -c E:\dev\chess\move.cpp
 
 CMakeFiles/chess.dir/move.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/chess.dir/move.cpp.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Lionel\c++\c-chess-bit\move.cpp > CMakeFiles\chess.dir\move.cpp.i
+	E:\dev\mingw\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\dev\chess\move.cpp > CMakeFiles\chess.dir\move.cpp.i
 
 CMakeFiles/chess.dir/move.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/chess.dir/move.cpp.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Lionel\c++\c-chess-bit\move.cpp -o CMakeFiles\chess.dir\move.cpp.s
+	E:\dev\mingw\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\dev\chess\move.cpp -o CMakeFiles\chess.dir\move.cpp.s
 
 CMakeFiles/chess.dir/board.cpp.obj: CMakeFiles/chess.dir/flags.make
 CMakeFiles/chess.dir/board.cpp.obj: ../board.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Lionel\c++\c-chess-bit\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/chess.dir/board.cpp.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\chess.dir\board.cpp.obj -c C:\Users\Lionel\c++\c-chess-bit\board.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\dev\chess\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/chess.dir/board.cpp.obj"
+	E:\dev\mingw\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\chess.dir\board.cpp.obj -c E:\dev\chess\board.cpp
 
 CMakeFiles/chess.dir/board.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/chess.dir/board.cpp.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Lionel\c++\c-chess-bit\board.cpp > CMakeFiles\chess.dir\board.cpp.i
+	E:\dev\mingw\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\dev\chess\board.cpp > CMakeFiles\chess.dir\board.cpp.i
 
 CMakeFiles/chess.dir/board.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/chess.dir/board.cpp.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Lionel\c++\c-chess-bit\board.cpp -o CMakeFiles\chess.dir\board.cpp.s
+	E:\dev\mingw\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\dev\chess\board.cpp -o CMakeFiles\chess.dir\board.cpp.s
 
 # Object files for target chess
 chess_OBJECTS = \
@@ -126,7 +126,7 @@ chess.exe: CMakeFiles/chess.dir/build.make
 chess.exe: CMakeFiles/chess.dir/linklibs.rsp
 chess.exe: CMakeFiles/chess.dir/objects1.rsp
 chess.exe: CMakeFiles/chess.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Lionel\c++\c-chess-bit\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable chess.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=E:\dev\chess\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable chess.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\chess.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -139,6 +139,6 @@ CMakeFiles/chess.dir/clean:
 .PHONY : CMakeFiles/chess.dir/clean
 
 CMakeFiles/chess.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\Lionel\c++\c-chess-bit C:\Users\Lionel\c++\c-chess-bit C:\Users\Lionel\c++\c-chess-bit\cmake-build-debug C:\Users\Lionel\c++\c-chess-bit\cmake-build-debug C:\Users\Lionel\c++\c-chess-bit\cmake-build-debug\CMakeFiles\chess.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" E:\dev\chess E:\dev\chess E:\dev\chess\cmake-build-debug E:\dev\chess\cmake-build-debug E:\dev\chess\cmake-build-debug\CMakeFiles\chess.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/chess.dir/depend
 

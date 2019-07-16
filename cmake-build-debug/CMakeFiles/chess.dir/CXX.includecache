@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Lionel/c++/c-chess-bit/board.cpp
+E:/dev/chess/board.cpp
 board.h
-C:/Users/Lionel/c++/c-chess-bit/board.h
+E:/dev/chess/board.h
 move.h
-C:/Users/Lionel/c++/c-chess-bit/move.h
+E:/dev/chess/move.h
 iostream
 -
 bitset
@@ -20,21 +20,49 @@ string
 vector
 -
 
-C:/Users/Lionel/c++/c-chess-bit/board.h
+E:/dev/chess/board.h
 utils.h
-C:/Users/Lionel/c++/c-chess-bit/utils.h
+E:/dev/chess/utils.h
 move.h
-C:/Users/Lionel/c++/c-chess-bit/move.h
+E:/dev/chess/move.h
 string
 -
 vector
 -
 
-C:/Users/Lionel/c++/c-chess-bit/move.h
-utils.h
-C:/Users/Lionel/c++/c-chess-bit/utils.h
+E:/dev/chess/main.cpp
+board.h
+E:/dev/chess/board.h
+move.h
+E:/dev/chess/move.h
+iostream
+-
+vector
+-
+chrono
+-
+unordered_map
+-
 
-C:/Users/Lionel/c++/c-chess-bit/utils.h
+E:/dev/chess/move.cpp
+move.h
+E:/dev/chess/move.h
+
+E:/dev/chess/move.h
+utils.h
+E:/dev/chess/utils.h
+
+E:/dev/chess/utils.cpp
+utils.h
+E:/dev/chess/utils.h
+random
+-
+iostream
+-
+bitset
+-
+
+E:/dev/chess/utils.h
 random
 -
 vector
